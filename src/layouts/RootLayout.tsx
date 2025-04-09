@@ -1,10 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
+import { Category } from "../types";
 
-export default function RootLayout() {
+type RootLayoutProps = {
+	categories: Category[];
+};
+
+export default function RootLayout({ categories }: Readonly<RootLayoutProps>) {
 	return (
 		<>
 			<nav>
-				<Link to="/">Home</Link> - <Link to="/cats">Cats</Link>
+				<Link to="/">Home</Link>
+				{categories.map((category) => (
+					<Link key={category.slug} to={category.slug}>
+						{category.name}
+					</Link>
+				))}
 			</nav>
 			<main>
 				<Outlet />

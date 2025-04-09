@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { Item } from "../types";
 
 type CategoryPageProps = {
@@ -6,12 +6,16 @@ type CategoryPageProps = {
 };
 
 const CategoryPage = ({ items }: CategoryPageProps) => {
+	const params = useParams();
+
+	const newItems = items.filter((item) => item.category === params.category);
+
 	return (
 		<div>
 			<h1>CategoryPage</h1>
 			<p>en lista på alla katter:</p>
 			<ul>
-				{items.map((cat) => (
+				{newItems.map((cat) => (
 					<li key={cat.id}>
 						<Link to={cat.id}>{cat.name}</Link>
 					</li>

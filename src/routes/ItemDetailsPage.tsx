@@ -4,11 +4,13 @@ import { Item } from "../types";
 type ItemDetailsPageProps = {
 	items: Item[];
 };
+
 const ItemDetailsPage = ({ items }: ItemDetailsPageProps) => {
 	const params = useParams();
-	console.log(params);
 
 	const item = items.filter((item) => item.id === params.itemid);
+
+	if (item.length === 0) return <div>Inget item hittat.</div>;
 
 	return (
 		<div>
@@ -16,8 +18,8 @@ const ItemDetailsPage = ({ items }: ItemDetailsPageProps) => {
 			<div>
 				{item.length > 0 && (
 					<>
-						<p>Name:{item[0].name}</p>
-						<p>Details:{item[0].details}</p>
+						<p>Name: {item[0].name}</p>
+						<p>Details: {item[0].details}</p>
 					</>
 				)}
 			</div>

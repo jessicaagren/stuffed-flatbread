@@ -5,7 +5,7 @@ import HomePage from "./routes/HomePage";
 import CategoryPage from "./routes/CategoryPage";
 import ItemDetailsPage from "./routes/ItemDetailsPage";
 import { useState } from "react";
-import { Item } from "./types";
+import { Category, Item } from "./types";
 
 /*
 routes
@@ -19,34 +19,45 @@ routes
 */
 
 function App() {
-	const [cats, setCats] = useState<Item[]>([
+	const [categories, setCategories] = useState<Category[]>([
+		{ name: "Cats", slug: "cats" },
+		{ name: "Dogs", slug: "dogs" },
+	]);
+
+	const [items, setItems] = useState<Item[]>([
 		{
 			id: "abc",
-			category: "cat",
+			category: "cats",
 			name: "Bosse",
 			details: "cute cat!",
 		},
 		{
 			id: "wert",
-			category: "cat",
+			category: "cats",
 			name: "Misse",
 			details: "VERY cute cat!",
+		},
+		{
+			id: "zxc",
+			category: "dogs",
+			name: "Rolf",
+			details: "vov vov",
 		},
 	]);
 
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <RootLayout />,
+			element: <RootLayout categories={categories} />,
 			children: [
 				{ index: true, element: <HomePage /> },
 				{
-					path: "cats",
-					element: <CategoryPage items={cats} />,
+					path: "/:category",
+					element: <CategoryPage items={items} />,
 					children: [
 						{
-							path: "/cats/:itemid",
-							element: <ItemDetailsPage items={cats} />,
+							path: "/:category/:itemid",
+							element: <ItemDetailsPage items={items} />,
 						},
 					],
 				},
