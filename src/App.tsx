@@ -22,6 +22,7 @@ function App() {
 	const [categories, setCategories] = useState<Category[]>([
 		{ name: "Cats", slug: "cats" },
 		{ name: "Dogs", slug: "dogs" },
+		{ name: "Foods", slug: "foods" },
 	]);
 
 	const [items, setItems] = useState<Item[]>([
@@ -42,6 +43,12 @@ function App() {
 			category: "dogs",
 			name: "Rolf",
 			details: "vov vov",
+		},
+		{
+			id: "oiu",
+			category: "foods",
+			name: "Broccoli",
+			details: "mums!",
 		},
 	]);
 
