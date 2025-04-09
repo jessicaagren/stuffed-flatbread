@@ -1,11 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-import { Category } from "../types";
+import useCategories from "../hooks/useCategories";
 
-type RootLayoutProps = {
-	categories: Category[];
-};
+export default function RootLayout() {
+	const { categories } = useCategories();
 
-export default function RootLayout({ categories }: Readonly<RootLayoutProps>) {
 	return (
 		<>
 			<nav>

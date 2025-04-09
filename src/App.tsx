@@ -5,7 +5,7 @@ import HomePage from "./routes/HomePage";
 import CategoryPage from "./routes/CategoryPage";
 import ItemDetailsPage from "./routes/ItemDetailsPage";
 import { useState } from "react";
-import { Category, Item } from "./types";
+import { Item } from "./types";
 
 /*
 routes
@@ -19,12 +19,6 @@ routes
 */
 
 function App() {
-	const [categories, setCategories] = useState<Category[]>([
-		{ name: "Cats", slug: "cats" },
-		{ name: "Dogs", slug: "dogs" },
-		{ name: "Foods", slug: "foods" },
-	]);
-
 	const [items, setItems] = useState<Item[]>([
 		{
 			id: "abc",
@@ -55,7 +49,7 @@ function App() {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <RootLayout categories={categories} />,
+			element: <RootLayout />,
 			children: [
 				{ index: true, element: <HomePage /> },
 				{
