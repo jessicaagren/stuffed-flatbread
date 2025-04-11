@@ -1,0 +1,28 @@
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background-color: beige;
+}
+
+a {
+	display: inlineblock;
+	padding: 0.2rem;
+	margin: 0.2rem;
+	color: black;
+}
+
+nav,
+main,
+footer {
+	border: solid 2px lightpink;
+	padding: 0.5rem;
+	margin: 0.5rem;
+}
+
+nav {
+	background-color: lightpink;
+
+	a {
+		color: white;
+		font-weight: bold;
+	}
+}
