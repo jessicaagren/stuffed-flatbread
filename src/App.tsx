@@ -4,43 +4,9 @@ import RootLayout from "./layouts/RootLayout";
 import HomePage from "./routes/HomePage";
 import CategoryPage from "./routes/CategoryPage";
 import ItemDetailsPage from "./routes/ItemDetailsPage";
-import { useState } from "react";
-import { Item } from "./types";
+import { ItemContextProvider } from "./contexts/ItemContext";
 
 function App() {
-	const [items, setItems] = useState<Item[]>([
-		{
-			id: "abc",
-			category: "cats",
-			name: "Bosse",
-			details: "cute cat!",
-		},
-		{
-			id: "wert",
-			category: "cats",
-			name: "Misse",
-			details: "VERY cute cat!",
-		},
-		{
-			id: "zxc",
-			category: "dogs",
-			name: "Rolf",
-			details: "vov vov",
-		},
-		{
-			id: "oiu",
-			category: "foods",
-			name: "Broccoli",
-			details: "mums!",
-		},
-		{
-			id: "ofof",
-			category: "dogs",
-			name: "Linus",
-			details: "Lars hund",
-		},
-	]);
-
 	const router = createBrowserRouter([
 		{
 			path: "/",
@@ -49,11 +15,11 @@ function App() {
 				{ index: true, element: <HomePage /> },
 				{
 					path: "/:category",
-					element: <CategoryPage items={items} />,
+					element: <CategoryPage />,
 					children: [
 						{
 							path: "/:category/:itemid",
-							element: <ItemDetailsPage items={items} />,
+							element: <ItemDetailsPage />,
 						},
 					],
 				},
@@ -61,7 +27,11 @@ function App() {
 		},
 	]);
 
-	return <RouterProvider router={router} />;
+	return (
+		<ItemContextProvider>
+			<RouterProvider router={router} />
+		</ItemContextProvider>
+	);
 }
 
 export default App;

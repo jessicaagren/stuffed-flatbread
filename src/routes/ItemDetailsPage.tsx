@@ -1,14 +1,11 @@
 import { useParams } from "react-router-dom";
-import { Item } from "../types";
+import { useItemContext } from "../contexts/ItemContext";
 
-type ItemDetailsPageProps = {
-	items: Item[];
-};
-
-const ItemDetailsPage = ({ items }: ItemDetailsPageProps) => {
+const ItemDetailsPage = () => {
+	const { state } = useItemContext();
 	const params = useParams();
 
-	const item = items.filter((item) => item.id === params.itemid);
+	const item = state.filter((item) => item.id === params.itemid);
 
 	if (item.length === 0) return <div>Inget item hittat.</div>;
 

@@ -1,19 +1,27 @@
 import { Link, Outlet, useParams } from "react-router-dom";
-import { Item } from "../types";
+import { useItemContext } from "../contexts/ItemContext";
 
-type CategoryPageProps = {
-	items: Item[];
-};
-
-const CategoryPage = ({ items }: CategoryPageProps) => {
+const CategoryPage = () => {
+	const { state } = useItemContext();
 	const params = useParams();
 
-	const newItems = items.filter((item) => item.category === params.category);
+	const newItems = state.filter((item) => item.category === params.category);
+
+	const swedishCategory = () => {
+		switch (params.category) {
+			case "cats":
+				return "katter";
+			case "dogs":
+				return "hundar";
+			case "foods":
+				return "matsaker";
+		}
+	};
 
 	return (
 		<div>
 			<h1>CategoryPage</h1>
-			<p>en lista på alla Items:</p>
+			<p>en lista på alla {swedishCategory()}:</p>
 			<ul>
 				{newItems.map((cat) => (
 					<li key={cat.id}>
