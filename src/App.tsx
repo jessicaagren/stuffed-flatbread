@@ -33,6 +33,12 @@ function App() {
 			name: "Broccoli",
 			details: "mums!",
 		},
+		{
+			id: "ofof",
+			category: "dogs",
+			name: "Linus",
+			details: "Lars hund",
+		},
 	]);
 
 	const router = createBrowserRouter([

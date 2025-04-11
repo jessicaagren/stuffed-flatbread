@@ -13,7 +13,7 @@ const CategoryPage = ({ items }: CategoryPageProps) => {
 	return (
 		<div>
 			<h1>CategoryPage</h1>
-			<p>en lista på alla katter:</p>
+			<p>en lista på alla Items:</p>
 			<ul>
 				{newItems.map((cat) => (
 					<li key={cat.id}>
